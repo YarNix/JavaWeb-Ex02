@@ -73,4 +73,22 @@ public class UserDaoImpl implements IUserDao {
 		return null;
 	}
 
+	@Override
+	public int getDefaultRoleId() {
+		try {
+			Connection conn = DBConnectSQL.getConnection();
+			PreparedStatement st = conn.prepareStatement("SELECT * FROM Roles WHERE rolename = ?");
+			st.setString(1, "USER");
+			ResultSet rs = st.executeQuery();
+			
+			if (rs.next())
+				return rs.getInt("roleid");
+		}
+		catch (SQLException ex)
+		{
+			ex.printStackTrace();
+			
+		}
+		return 1;
+	}
 }

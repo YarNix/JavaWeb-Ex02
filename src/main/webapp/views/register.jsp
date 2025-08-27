@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Login Page</title>
+<title>Register Page</title>
 <link
 	href="https://fastly.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -30,6 +30,21 @@
 							class="form-control" placeholder="" required /> <label
 							for="user-name">Tên đăng nhập</label>
 					</div>
+					<div class="my-1 form-floating">
+						<input id="user-fullname" name="user-fullname" type="text"
+							class="form-control" placeholder="" required /> <label
+							for="user-fullname">Họ tên</label>
+					</div>
+					<div class="my-1 form-floating">
+						<input id="user-email" name="user-email" type="email"
+							class="form-control" placeholder="" /> <label
+							for="user-email">Email</label>
+					</div>
+					<div class="my-1 form-floating">
+						<input id="user-phone" name="user-phone" type="tel"
+							class="form-control" placeholder="" pattern="[0-9]{10}"/> <label
+							for="user-phone">Số điện thoại</label>
+					</div>
 					<div class="mb-4 form-floating">
 						<input id="user-pass" name="user-pass" type="password"
 							class="form-control" placeholder="" required /> <label
@@ -38,22 +53,16 @@
 					<c:if test="${alert != null}">
 						<div class="alert alert-danger" role="alert">${alert}</div>
 					</c:if>
-					<div class="d-grid mb-2">
-						<button type="submit" class="btn btn-lg btn-primary btn-block">Đăng nhập</button>
-					</div>
 					<div class="d-grid">
-						<a href="${pageContext.request.contextPath}/register" class="btn btn-lg btn-secondary btn-block">Đăng ký</a>
+						<button type="submit" class="btn btn-lg btn-primary btn-block">Tạo tài khoản</button>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
-
-
 	<script
 		src="https://fastly.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
 		integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
 		crossorigin="anonymous" type="text/javascript"></script>
-
 </body>
 </html>
