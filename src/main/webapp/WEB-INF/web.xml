@@ -4,7 +4,7 @@
     <description></description>
     <display-name>Login</display-name>
     <servlet-name>Login</servlet-name>
-    <servlet-class>vn.yarnix.controller.Login</servlet-class>
+    <servlet-class>vn.yarnix.controllers.Login</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Login</servlet-name>
@@ -20,4 +20,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>Hello_Example</display-name>
+    <servlet-name>Hello_Example</servlet-name>
+    <servlet-class>vn.yarnix.controllers.Hello</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Hello_Example</servlet-name>
+    <url-pattern>/hello</url-pattern>
+  </servlet-mapping>
 </web-app>
