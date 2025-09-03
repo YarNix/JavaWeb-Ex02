@@ -33,3 +33,6 @@ Thumbs.db
 # ---- Other ----
 *.swp
 *.swo
+
+# -- Environment --
+.env

@@ -39,10 +39,20 @@
 						<div class="alert alert-danger" role="alert">${alert}</div>
 					</c:if>
 					<div class="d-grid mb-2">
-						<button type="submit" class="btn btn-lg btn-primary btn-block">Đăng nhập</button>
+						<button type="submit" class="btn btn-lg btn-primary btn-block">Đăng
+							nhập</button>
 					</div>
-					<div class="d-grid">
-						<a href="${pageContext.request.contextPath}/register" class="btn btn-lg btn-secondary btn-block">Đăng ký</a>
+					<div class="d-grid mb-1">
+						<div class="row g-2">
+							<div class="col-12 col-lg-6">
+								<a href="${pageContext.request.contextPath}/register"
+									class="btn btn-lg btn-secondary btn-block w-100">Đăng ký</a>
+							</div>
+							<div class="col-12 col-lg-6">
+								<a href="${pageContext.request.contextPath}/forgot-password"
+									class="btn btn-lg btn-secondary btn-block w-100">Quên mật khẩu</a>
+							</div>
+						</div>
 					</div>
 				</form>
 			</div>

@@ -4,12 +4,28 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 public class DBConnectSQL {
 	private static final String HOST = "localhost";
     private static final int PORT = 1433;
-    private static final String DATABASE = "dbLTWeb";
-    private static final String USER = "sa";
-    private static final String PASSWORD = "ja72jrD=e-ESRY9X";
+    public static final String DATABASE;
+    public static final String USER;
+    public static final String PASSWORD;
+    public static final String URL_CONN;
+    
+    static {
+    	Dotenv env = Dotenv.load();
+    	
+        DATABASE = env.get("DATABASE_NAME");
+        USER = env.get("DATABASE_USERNAME");
+        PASSWORD = env.get("DATABASE_PASSWORD");
+        
+        URL_CONN = String.format(
+            "jdbc:sqlserver://%s:%d;databaseName=%s;encrypt=true;trustServerCertificate=true;",
+            HOST, PORT, DATABASE
+        );
+    }
 
     public static Connection getConnection() throws SQLException {
     	try {
@@ -17,13 +33,7 @@ public class DBConnectSQL {
         } catch (ClassNotFoundException e) {
             throw new SQLException("SQL Server JDBC Driver not found!", e);
         }
-    	
-        String url = String.format(
-            "jdbc:sqlserver://%s:%d;databaseName=%s;encrypt=true;trustServerCertificate=true;",
-            HOST, PORT, DATABASE
-        );
-        
-        return DriverManager.getConnection(url, USER, PASSWORD);
+    	return DriverManager.getConnection(URL_CONN, USER, PASSWORD);
     }
 
     public static void close(Connection conn) {

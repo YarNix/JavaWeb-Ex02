@@ -1,7 +1,7 @@
 package vn.yarnix.models;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class UserModel implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -14,14 +14,14 @@ public class UserModel implements Serializable {
 	private String avatar;
 	private int roleid;
 	private String phone;
-	private Date createdDate;
+	private LocalDateTime createdDate;
 
 	public UserModel() {
 		super();
 	}
 	
 	public UserModel(int id, String email, String userName, String fullName, String passWord, String avatar, int roleid,
-			String phone, Date createdDate) {
+			String phone, LocalDateTime createdDate) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -98,11 +98,11 @@ public class UserModel implements Serializable {
 		this.phone = phone;
 	}
 
-	public Date getCreatedDate() {
+	public LocalDateTime getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(Date createdDate) {
+	public void setCreatedDate(LocalDateTime createdDate) {
 		this.createdDate = createdDate;
 	}
 

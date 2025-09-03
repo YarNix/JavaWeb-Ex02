@@ -40,4 +40,24 @@
     <servlet-name>Register</servlet-name>
     <url-pattern>/register</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ForgotPassword</display-name>
+    <servlet-name>ForgotPassword</servlet-name>
+    <servlet-class>vn.yarnix.controllers.ForgotPassword</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ForgotPassword</servlet-name>
+    <url-pattern>/forgot-password</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ResetPassword</display-name>
+    <servlet-name>ResetPassword</servlet-name>
+    <servlet-class>vn.yarnix.controllers.ResetPassword</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ResetPassword</servlet-name>
+    <url-pattern>/reset-password</url-pattern>
+  </servlet-mapping>
 </web-app>
