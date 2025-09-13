@@ -49,7 +49,7 @@ public class Login extends HttpServlet {
 		if (user != null) {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("user", user);
-			response.sendRedirect(request.getContextPath() + "/hello");
+			response.sendRedirect(request.getContextPath() + "/waiting");
 		}else{
 			alertMsg =
 					"Tài khoản hoặc mật khẩu không đúng";

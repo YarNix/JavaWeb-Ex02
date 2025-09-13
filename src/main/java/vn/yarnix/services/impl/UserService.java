@@ -7,10 +7,10 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 import vn.yarnix.dao.IUserDao;
-import vn.yarnix.dao.impl.UserDaoImpl;
+import vn.yarnix.dao.impl.UserDao;
 
 public class UserService implements IUserService {
-	IUserDao dao = new UserDaoImpl();
+	IUserDao dao = new UserDao();
 	
 	@Override
 	public UserModel login(String username, String password) {
@@ -56,6 +56,11 @@ public class UserService implements IUserService {
 			return;
 		dao.deleteResetToken(userId);
 		dao.setPassword(userId, password);
+	}
+
+	@Override
+	public boolean isRole(int id, String string) {
+		return dao.isRole(id, string);
 	}
 
 }

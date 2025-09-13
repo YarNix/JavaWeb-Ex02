@@ -9,4 +9,6 @@ public interface IUserService {
 	
 	String generatePasswordResetToken(String email);
 	void resetPassword(String resetToken, String password);
+	
+	boolean isRole(int id, String string);
 }

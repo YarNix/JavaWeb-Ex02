@@ -13,6 +13,7 @@ public interface IUserDao {
 	void setPassword(int userId, String password);
 	int findRoleByName(String name);
 	int getDefaultRoleId();
+	boolean isRole(int id, String string);
 	
 	int getUserIdByResetToken(String token);
 	boolean isResetTokenValid(String token);

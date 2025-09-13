@@ -11,7 +11,7 @@ import vn.yarnix.configs.DBConnectSQL;
 import vn.yarnix.dao.IUserDao;
 import vn.yarnix.models.UserModel;
 
-public class UserDaoImpl implements IUserDao {
+public class UserDao implements IUserDao {
 	
 	private UserModel resultToUserModel(ResultSet rs) throws SQLException
 	{
@@ -131,8 +131,25 @@ public class UserDaoImpl implements IUserDao {
 
 	@Override
 	public int getDefaultRoleId() {
-		
 		return findRoleByName("USER");
+	}
+
+	@Override
+	public boolean isRole(int id, String string) {
+		try {
+			Connection conn = DBConnectSQL.getConnection();
+			PreparedStatement st = conn.prepareStatement("SELECT * FROM Users JOIN Roles ON Users.roleid = Roles.roleid WHERE Users.id = ? AND rolename = ?");
+			st.setInt(1, id);
+			st.setString(2, string);
+			ResultSet rs = st.executeQuery();
+			
+			return rs.next();
+		}
+		catch (SQLException ex)
+		{
+			ex.printStackTrace();
+		}
+		return false;
 	}
 
 	@Override

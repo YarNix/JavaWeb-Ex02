@@ -19,6 +19,7 @@
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
+    <welcome-file>views/hello.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
     <description></description>
@@ -59,5 +60,47 @@
   <servlet-mapping>
     <servlet-name>ResetPassword</servlet-name>
     <url-pattern>/reset-password</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Waiting</display-name>
+    <servlet-name>Waiting</servlet-name>
+    <servlet-class>vn.yarnix.controllers.Waiting</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Waiting</servlet-name>
+    <url-pattern>/waiting</url-pattern>
+    <url-pattern>/redirect</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CategoryList</display-name>
+    <servlet-name>CategoryList</servlet-name>
+    <servlet-class>vn.yarnix.controllers.CategoryList</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CategoryList</servlet-name>
+    <url-pattern>/category</url-pattern>
+    <url-pattern>/admin/category</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Logout</display-name>
+    <servlet-name>Logout</servlet-name>
+    <servlet-class>vn.yarnix.controllers.Logout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Logout</servlet-name>
+    <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CategoryAdd</display-name>
+    <servlet-name>CategoryAdd</servlet-name>
+    <servlet-class>vn.yarnix.controllers.CategoryAdd</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CategoryAdd</servlet-name>
+    <url-pattern>/admin/category/add</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -1,25 +1,31 @@
 package vn.yarnix.controllers;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import vn.yarnix.models.UserModel;
+import vn.yarnix.services.ICategoryService;
+import vn.yarnix.services.IUserService;
+import vn.yarnix.services.impl.CategoryService;
+import vn.yarnix.services.impl.UserService;
 
 import java.io.IOException;
 
 /**
- * Servlet implementation class Hello
+ * Servlet implementation class CategoryList
  */
-public class Hello extends HttpServlet {
+public class CategoryList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Hello() {
+    public CategoryList() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -32,8 +38,13 @@ public class Hello extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + "/login");
 			return;
 		}
-		request.setAttribute("user", session.getAttribute("user"));
-		request.getRequestDispatcher("/views/hello.jsp").forward(request, response);
+		UserModel user = (UserModel)session.getAttribute("user");
+		IUserService usr_service = new UserService();
+		ICategoryService cat_service = new CategoryService();
+		request.setAttribute("user", user);
+		request.setAttribute("categories", cat_service.getAll());
+		request.setAttribute("isUserAdmin", usr_service.isRole(user.getId(), "ADMIN"));
+		request.getRequestDispatcher("/views/category_list.jsp").forward(request, response);
 	}
 
 }

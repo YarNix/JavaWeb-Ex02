@@ -6,19 +6,21 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import vn.yarnix.models.UserModel;
+import vn.yarnix.services.IUserService;
+import vn.yarnix.services.impl.UserService;
 
 import java.io.IOException;
 
 /**
- * Servlet implementation class Hello
+ * Servlet implementation class Waiting
  */
-public class Hello extends HttpServlet {
+public class Waiting extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Hello() {
+    public Waiting() {
         super();
     }
 
@@ -32,8 +34,12 @@ public class Hello extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + "/login");
 			return;
 		}
-		request.setAttribute("user", session.getAttribute("user"));
-		request.getRequestDispatcher("/views/hello.jsp").forward(request, response);
+		UserModel user = (UserModel)session.getAttribute("user");
+		IUserService usr_service = new UserService();
+		if (usr_service.isRole(user.getId(), "ADMIN"))
+			response.sendRedirect(request.getContextPath() + "/admin/category");
+		else
+			response.sendRedirect(request.getContextPath() + "/category");
 	}
 
 }
